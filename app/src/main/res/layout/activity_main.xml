@@ -62,34 +62,36 @@
         app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/less_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="lessThanButton"
+        android:onClick="checkAnswer"
         android:text="LESS THAN"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/equal_button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/first_number" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/equal_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="checkAnswer"
         android:text="EQUAL"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/greater_button"
+        app:layout_constraintStart_toEndOf="@+id/less_button"
         app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/greater_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="checkAnswer"
         android:text="GREATER THAN"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/equal_button"
         app:layout_constraintTop_toBottomOf="@+id/second_number" />
 
     <TextView
@@ -101,6 +103,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/equal_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

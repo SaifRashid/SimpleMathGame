@@ -4,11 +4,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import java.util.Random
 
 class MainActivity : AppCompatActivity() {
 
-    var score = 0
+    private var score = 0
+    private val randomNumberRange = 10
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,34 +19,38 @@ class MainActivity : AppCompatActivity() {
         pickTwoRandomNumbers()
 
     }
-
-    fun lessThanButton(view: View) {
-        // check two random numbers to see first number is less than second number
-        // If so, then increase score by 1
-        // else, decrease the score by 1
-
+    fun checkAnswer(view: View) {
         val firstNumber = findViewById<TextView>(R.id.first_number).text.toString().toInt()
         val secondNumber = findViewById<TextView>(R.id.second_number).text.toString().toInt()
 
-        if (firstNumber < secondNumber) {
+        var message = ""
+        if (view.id == R.id.less_button && firstNumber < secondNumber ||
+            view.id == R.id.greater_button && firstNumber > secondNumber ||
+            view.id == R.id.equal_button && firstNumber == secondNumber) {
             score++
+            message = "You got it, yay!"
         } else {
             score--
+            message = "You are not as smart as you thought"
         }
+
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
 
         val points = findViewById<TextView>(R.id.points)
         points.text = "Score: $score"
         pickTwoRandomNumbers()
+
     }
 
     private fun pickTwoRandomNumbers() {
         val firstNumber = findViewById<TextView>(R.id.first_number)
         val secondNumber = findViewById<TextView>(R.id.second_number)
 
-        val randomNumber1 = Random().nextInt(10)
-        val randomNumber2 = Random().nextInt(10)
+        firstNumber.text = "${generateRandomNum(randomNumberRange)}"
+        secondNumber.text = "${generateRandomNum(randomNumberRange)}"
+    }
 
-        firstNumber.text = "$randomNumber1"
-        secondNumber.text = "$randomNumber2"
+    private fun generateRandomNum(range: Int): Int {
+        return Random().nextInt(range)
     }
 }
